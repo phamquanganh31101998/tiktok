@@ -1,6 +1,21 @@
+import { useEffect, useState } from 'react'
+
 function Content() {
+  const [title, setTitle] = useState('')
+
+  useEffect(() => {
+    console.log('ihi')
+  })
+
   return (
-    <h1>Hi anh em</h1>
+    <div>
+      <input
+        value={title}
+        type="text"
+        onChange={e => setTitle(e.target.value)}
+      />
+      {console.log('Render')}
+    </div>
   )
 }
 
