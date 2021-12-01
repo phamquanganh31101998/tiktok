@@ -1,23 +1,20 @@
 import { useEffect, useState } from 'react'
 
 function Content() {
-  const [width, setWidth] = useState(window.innerWidth)
+  const [countdown, setCountdown] = useState(30)
 
   useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth)
-    }
-
-    window.addEventListener('resize', handleResize)
-
+    const intervalId = setInterval(() => {
+      setCountdown(prevState => prevState - 1)
+    }, 1000)
     return () => {
-      window.removeEventListener('resize', handleResize)
+      clearInterval(intervalId)
     }
   }, [])
 
   return (
     <div>
-      <h1>{width}</h1>
+      <h1>{countdown}</h1>
     </div>
   )
 }
