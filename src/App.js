@@ -1,13 +1,37 @@
-import { useState } from 'react'
-import Content from './Content'
+import { useState, useRef, useEffect } from 'react'
 
 function App() {
-  const [show, setShow] = useState(false)
+  const [count, setCount] = useState(60)
+  let timerId = useRef()
+  const prevCount = useRef()
+
+  useEffect(() => {
+    prevCount.current = count
+  }, [count])
+
+  const handleStart = () => {
+    timerId.current = setInterval(() => {
+      setCount(prevCount => prevCount - 1)
+    }, 1000)
+  }
+
+  const handleStop = () => {
+    clearInterval(timerId.current)
+  }
+
+  const h1Ref = useRef()
+
+  useEffect(() => {
+    const rect = h1Ref.current.getBoundingClientRect()
+
+    console.log(rect)
+  })
 
   return (
     <div className="App" style={{ padding: 32 }}>
-      <button onClick={() => setShow(!show)}>Toggle</button>
-      {show && <Content />}
+      <h1 ref={h1Ref}>{count}</h1>
+      <button onClick={handleStart}>Start</button>
+      <button onClick={handleStop}>Stop</button>
     </div>
   );
 }
