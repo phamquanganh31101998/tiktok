@@ -4,21 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-// fake comments
-function emitComments(id) {
-  setInterval(() => {
-    window.dispatchEvent(
-      new CustomEvent(`lesson-${id}`, {
-        detail: `Content ${id}`
-      })
-    )
-  }, 1000)
-}
-
-emitComments(1)
-emitComments(2)
-emitComments(3)
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
