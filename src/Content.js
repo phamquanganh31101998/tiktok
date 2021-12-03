@@ -1,10 +1,13 @@
 import { memo } from 'react'
 
-function Content() {
+function Content({ onIncrease }) {
+  console.log('re-render')
+
   return (
-    <div>
+    <>
       <h2>Hello anh em</h2>
-    </div>
+      <button onClick={onIncrease}>Click me!</button>
+    </>
   )
 }
 
