@@ -5,7 +5,7 @@ function App() {
   return (
     <GlobalStyles>
       <div style={{ padding: 20 }}>
-        <Button/>
+        <Button disabled/>
         <Button primary/>
       </div>
     </GlobalStyles>
